@@ -40,6 +40,8 @@ module MyshelfApi
       g.test_framework false
     end
 
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::MethodOverride

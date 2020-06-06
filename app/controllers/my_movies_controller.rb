@@ -28,7 +28,6 @@ class MyMoviesController < ApplicationController
     
     @current_user_movies = @current_user.my_movies.new(title: @movie_info[:title], genre: @movie_info[:title], released_date: @movie_info[:released], categories: :liked)
     if @current_user_movies.save
-      binding.pry
       @current_movie_img = @current_user_movies.images.create!(image_url: @movie_info[:poster])
       render json: {message: "Your movie added to the my movies collection"}, status: :created
     else

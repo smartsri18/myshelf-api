@@ -17,4 +17,7 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def newsapi
+    News.new(Rails.application.credentials.news_api[:api_key])
+  end
 end

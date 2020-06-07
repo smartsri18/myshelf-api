@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                   :integer          not null, primary key
+#  first_name           :string           not null
+#  last_name            :string
+#  email                :string           not null
+#  password_digest      :string           not null
+#  password_reset_token :string
+#  image_url            :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  admin                :boolean          default(FALSE)
+#
 class User < ApplicationRecord
   include HasJwt
 

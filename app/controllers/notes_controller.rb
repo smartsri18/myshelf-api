@@ -1,6 +1,11 @@
 class NotesController < ApplicationController
-  before_action :authorize_request
-  before_action :find_user, except: %i[create]
+  before_action :authorize_request, except: %i[index]
+  before_action :find_user_notes, except: [:create, :index]
+
+  def index
+    @notes = MyNote.all
+    render json: @notes, status: :ok
+  end
 
   def create
     @note_query = notes_params
@@ -17,6 +22,7 @@ class NotesController < ApplicationController
       render json: { errors: @user_notes.errors.full_messages },
               status: :unprocessable_entity
     end
+    render json: @user_notes, status: :ok
   end
 
   def destroy
